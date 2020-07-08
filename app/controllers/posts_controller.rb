@@ -1,8 +1,17 @@
 class PostsController < ApplicationController
 
   def index
-    @posts = Post.all
+    if params[:author_id]
+      @posts = Author.find(params[:author_id]).posts 
+      byebug
+      #index of all posts by a certain author
+    else 
+      @posts = Post.all 
+      #access the index of all posts (Post.all
+    end 
   end
+  
+  #The conditional hinges on whether there's an :author_id key in the params hash — in other words, whether the user navigated to /authors/:id/posts or simply /posts
 
   def show
     @post = Post.find(params[:id])
