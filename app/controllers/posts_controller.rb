@@ -4,6 +4,8 @@ class PostsController < ApplicationController
     if params[:author_id]
       @posts = Author.find(params[:author_id]).posts 
       
+      #Where is params[:author_id] coming from? Rails provides it for us through the nested route, so we don't have to worry about a collision with the :id parameter that posts#show is looking for. Rails takes the parent resource's name and appends _id to it for a nice, predictable way to find the parent resource's ID.
+      
       #index of all posts by a certain author
     else 
       @posts = Post.all 
