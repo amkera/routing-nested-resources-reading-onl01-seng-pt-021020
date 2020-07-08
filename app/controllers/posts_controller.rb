@@ -40,6 +40,7 @@ class PostsController < ApplicationController
 private
 
   def post_params
+    byebug
     params.require(:post).permit(:title, :desription, :post_status, :author_id)
   end
 end
