@@ -1,9 +1,10 @@
 class PostsController < ApplicationController
 
   def index
+    byebug
     if params[:author_id]
       @posts = Author.find(params[:author_id]).posts 
-      byebug
+      
       #index of all posts by a certain author
     else 
       @posts = Post.all 
